@@ -9,7 +9,7 @@
       }
       
     //Creación de los objetos
-    var carta1 = new Carta(1, "images/1Oros.png");       //1 de Oros
+    var carta1 = new Carta(1, "images/1oros.png");       //1 de Oros
     var carta2 = new Carta(2, "images/2Oros.png");       //2 de Oros
     var carta3 = new Carta(3, "images/3Oros.png");       //3 de Oros
 
