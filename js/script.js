@@ -9,16 +9,16 @@
       }
       
     //Creación de los objetos
-    var oro1 = new Carta(1, "images/1.1oro.png");       
-    var oro2 = new Carta(2, "images/1.2oro.png");       
-    var oro3 = new Carta(3, "images/1.3oro.png");       
-    var oro4 = new Carta(4, "images/1.4oro.png");       
-    var oro5 = new Carta(5, "images/1.5oro.png");       
-    var oro6 = new Carta(6, "images/1.6oro.png");       
-    var oro7 = new Carta(7, "images/1.7oro.png");       
-    var oro10 = new Carta(0.5, "images/1.8oro.png");       
-    var oro11 = new Carta(0.5, "images/1.9oro.png");       
-    var oro12 = new Carta(0.5, "images/1.10oro.png");      
+    var oro1 = new Carta(1, "images/1.1oros.png");       
+    var oro2 = new Carta(2, "images/1.2oros.png");       
+    var oro3 = new Carta(3, "images/1.3oros.png");       
+    var oro4 = new Carta(4, "images/1.4oros.png");       
+    var oro5 = new Carta(5, "images/1.5oros.png");       
+    var oro6 = new Carta(6, "images/1.6oros.png");       
+    var oro7 = new Carta(7, "images/1.7oros.png");       
+    var oro10 = new Carta(0.5, "images/1.8oros.png");       
+    var oro11 = new Carta(0.5, "images/1.9oros.png");       
+    var oro12 = new Carta(0.5, "images/1.10oros.png");      
     var espada1 = new Carta(1, "images/2.1espadas.png");      
     var espada2 = new Carta(2, "images/2.2espadas.png");     
     var espada3 = new Carta(3, "images/2.3espadas.png");      
@@ -55,14 +55,20 @@
                      espada1,espada2,espada3,espada4,espada5,espada6,espada7,espada10,espada11,espada12,
                      copas1,copas2,copas3,copas4,copas5,copas6,copas7,copas10,copas11,copas12,
                      bastos1,bastos2,bastos3,bastos4,bastos5,bastos6,bastos7,bastos10,bastos11,bastos12];
-
+    var nota=0.0;
     function SacarCarta(){
         var nuevaImagen = document.createElement("img");
-
+        
         var cartaleatoria=Math.floor(Math.random()*arrayCartas.length);
         var elegido= arrayCartas[cartaleatoria];
         nuevaImagen.src=elegido.url;
 
+        nuevaImagen.style.width = "120px";
+        nuevaImagen.style.height = "180px";
+
+        nota=nota+elegido.valor;
+        console.log(nota);
         arrayCartas.splice(cartaleatoria, 1);
         document.getElementById("tapete").appendChild(nuevaImagen);
+        
     }
