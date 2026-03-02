@@ -57,6 +57,12 @@
                      bastos1,bastos2,bastos3,bastos4,bastos5,bastos6,bastos7,bastos10,bastos11,bastos12];
 
     function SacarCarta(){
-        var elegido= arrayCartas[Math.floor(Math.random()*arrayCartas.length)];
-        document.getElementById("demo").src=elegido.url;  
+        var nuevaImagen = document.createElement("img");
+
+        var cartaleatoria=Math.floor(Math.random()*arrayCartas.length);
+        var elegido= arrayCartas[cartaleatoria];
+        nuevaImagen.src=elegido.url;
+
+        arrayCartas.splice(cartaleatoria, 1);
+        document.getElementById("tapete").appendChild(nuevaImagen);
     }
