@@ -8,15 +8,25 @@
     <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
-    <div id="tapete"></div>
-    <div  id="boton" align="center">
-        <button onclick="SacarCarta()">SacarCarta</button>
-        <button onclick="Plantarse()">Plantarse</button>
+    <div id="pantalla-inicio" class="overlay">
+        <div class="mensaje-bienvenida">
+            <h1>7 y Media</h1>
+            <p>¿Podrás vencer a la banca sin pasarte?</p>
+            <button onclick="comenzarJuego()">Empezar Partida</button>
     </div>
-    <div id="maquina" align="center">
-        
+    <div class="tablero">
+        <div id="tapete" class="zona-cartas"></div>
+        <div  class="controles" >
+            <button onclick="SacarCarta()">SacarCarta</button>
+            <button onclick="Plantarse()">Plantarse</button>
+        </div>
+        <div id="maquina" class="zona-cartas"></div>
+        <div id="pantalla-final" class="oculto"> 
+            <div class="contenido-modal"> 
+                <img id="imagen-final" src="tu-imagen-final.jpg" alt="Imagen Final"> <br> 
+                <button id="cerrar-modal">Cerrar</button> 
+            </div> 
+        </div>
     </div>
-    <br>
-    <br>
 </body>
 </html>
