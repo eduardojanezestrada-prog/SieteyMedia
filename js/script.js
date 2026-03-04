@@ -2,7 +2,7 @@
     /*********** Definición de la clase cubo ************/
     class Carta {
         constructor (arg1, arg2) {
-            this.valor=parseInt(arg1);
+            this.valor=parseFloat(arg1);
             this.url=arg2;
         }
 
@@ -55,20 +55,53 @@
                      espada1,espada2,espada3,espada4,espada5,espada6,espada7,espada10,espada11,espada12,
                      copas1,copas2,copas3,copas4,copas5,copas6,copas7,copas10,copas11,copas12,
                      bastos1,bastos2,bastos3,bastos4,bastos5,bastos6,bastos7,bastos10,bastos11,bastos12];
-    var nota=0.0;
-    function SacarCarta(){
-        var nuevaImagen = document.createElement("img");
+    
+    // Creación de variables
+    var nota=0.0, notamaquina=0.0, plantado=false;
+    
+    // Función para que el jugador saque carta y calcule su puntuación
+    function SacarCarta() {
+        if(!plantado){
+            var nuevaImagen = document.createElement("img");
         
-        var cartaleatoria=Math.floor(Math.random()*arrayCartas.length);
-        var elegido= arrayCartas[cartaleatoria];
-        nuevaImagen.src=elegido.url;
+            var cartaleatoria=Math.floor(Math.random()*arrayCartas.length);
+            var elegido= arrayCartas[cartaleatoria];
+            nuevaImagen.src=elegido.url;
 
-        nuevaImagen.style.width = "120px";
-        nuevaImagen.style.height = "180px";
+            nuevaImagen.style.width = "120px";
+            nuevaImagen.style.height = "180px";
 
-        nota=nota+elegido.valor;
+            nota+=elegido.valor;
+            arrayCartas.splice(cartaleatoria, 1);
+            document.getElementById("tapete").appendChild(nuevaImagen);
+        }
+    }
+
+    // Función para plantarse
+    function Plantarse() {
+        plantado=true;
+        Maquina();
+    }
+
+    // Función para que juegue la máquina
+     async function Maquina() {
+        const esperar = (ms) => new Promise(resolve => setTimeout(resolve, ms));
         console.log(nota);
-        arrayCartas.splice(cartaleatoria, 1);
-        document.getElementById("tapete").appendChild(nuevaImagen);
+        document.getElementById("maquina")
+        while(notamaquina<7.5){
+            var nuevaImagen = document.createElement("img");
         
+            var cartaleatoria=Math.floor(Math.random()*arrayCartas.length);
+            var elegido= arrayCartas[cartaleatoria];
+            nuevaImagen.src=elegido.url;
+
+            nuevaImagen.style.width = "60px";
+            nuevaImagen.style.height = "90px";
+
+            notamaquina+=elegido.valor;
+            arrayCartas.splice(cartaleatoria, 1);
+            document.getElementById("maquina").appendChild(nuevaImagen);
+            await esperar(1000);
+        }
+        console.log(notamaquina);
     }
