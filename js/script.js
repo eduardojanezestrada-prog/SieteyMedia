@@ -57,7 +57,7 @@
                      bastos1,bastos2,bastos3,bastos4,bastos5,bastos6,bastos7,bastos10,bastos11,bastos12];
     
     // Creación de variables
-    var nota=0.0, notamaquina=0.0, plantado=false;
+    var nota=0.0, notamaquina=0.0, plantado=false, condicion=0;
     
     // Función para que el jugador saque carta y calcule su puntuación
     function SacarCarta() {
@@ -84,7 +84,7 @@
     }
 
     // Función para que juegue la máquina
-     async function Maquina() {
+    async function Maquina() {
         const esperar = (ms) => new Promise(resolve => setTimeout(resolve, ms));
         console.log(nota);
         document.getElementById("maquina")
@@ -103,5 +103,48 @@
             document.getElementById("maquina").appendChild(nuevaImagen);
             await esperar(1000);
         }
-        console.log(notamaquina);
+
+        if(nota=7.5){
+            condicion=1;
+        } else if(nota<7.5 && notamaquina<7.5){
+            if(nota>=notamaquina){
+                condicion=1;
+            } else {
+                condicion=0;
+            }
+        } else if(nota>7.5 && notamaquina>7.5){
+             if(nota<=notamaquina){
+                condicion=1;
+            } else {
+                condicion=0;
+            }
+        } else if(nota<7.5 && notamaquina>7.5){
+            condicion=1;
+        } else if(nota>7.5 && notamaquina<7.5){
+            condicion=0;
+        }
     }
+
+    // Función que debes llamar cuando detectes que el proceso "ha finalizado"
+    function mostrarImagenFinal(condicion) {
+        const imagen = document.getElementById('imagen-resultado');
+        const overlay = document.getElementById('pantalla-final');
+
+        // Evaluamos el resultado para elegir la imagen
+        if (condicion === 1) {
+            imagen.src = "ruta/a/tu-imagen-buena.jpg"; 
+            imagen.alt = "¡Enhorabuena, lo lograste!";
+        } else if (condicion === 0) {
+            imagen.src = "ruta/a/tu-imagen-mala.jpg";
+            imagen.alt = "Vaya, inténtalo de nuevo.";
+        }
+
+        // Una vez cambiada la imagen, mostramos la capa superpuesta
+        overlay.classList.remove('oculto');
+    }
+
+    // Lógica para cerrar la imagen final si el usuario quiere seguir viendo la página
+    document.getElementById('cerrar-modal').addEventListener('click', function() {
+        const overlay = document.getElementById('pantalla-final');
+        overlay.classList.add('oculto'); // Vuelve a ocultar la capa
+    });
