@@ -151,3 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
     location.reload(); // Esto fuerza al navegador a recargar la página por completo
 });
 });
+
+function playaudio(){
+    document.getElementById("audio").play();
+}
