@@ -68,13 +68,14 @@
             var elegido= arrayCartas[cartaleatoria];
             nuevaImagen.src=elegido.url;
 
-            nuevaImagen.style.width = "140px";
-            nuevaImagen.style.height = "200px";
+            nuevaImagen.style.width = "110px";
+            nuevaImagen.style.height = "170px";
 
             nota+=elegido.valor;
             arrayCartas.splice(cartaleatoria, 1);
             document.getElementById("tapete").appendChild(nuevaImagen);
         }
+        document.getElementById("puntaje-jugador").innerHTML = "Tu puntuación: " + nota;
     }
 
     // Función para plantarse
@@ -86,23 +87,25 @@
     // Función para que juegue la máquina
     async function Maquina() {
         const esperar = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+        const puntajeMaquina = document.getElementById("puntaje-maquina");
         document.getElementById("maquina");
         while(notamaquina<7.5){
             var nuevaImagen = document.createElement("img");
-        
             var cartaleatoria=Math.floor(Math.random()*arrayCartas.length);
             var elegido= arrayCartas[cartaleatoria];
-            nuevaImagen.src=elegido.url;
 
+            nuevaImagen.src=elegido.url;
             nuevaImagen.style.width = "90px";
             nuevaImagen.style.height = "135px";
 
             notamaquina+=elegido.valor;
             arrayCartas.splice(cartaleatoria, 1);
-            document.getElementById("maquina").appendChild(nuevaImagen);
-            await esperar(1000);
-        }
 
+            document.getElementById("maquina").appendChild(nuevaImagen);
+            puntajeMaquina.textContent = "Puntuación máquina: " + notamaquina;
+            await esperar(800);
+        }
+        
         if(nota===7.5){
             condicion=1;
         } else if(nota<7.5 && notamaquina<7.5){
