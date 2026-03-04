@@ -10,6 +10,7 @@ body, .tablero {
     align-items: center;
     font-family: 'Inter', -apple-system, sans-serif;
     color: white;
+    z-index: 1; /* El tablero se queda quieto atrás */
 }
 /* Estilo común para las zonas de cartas (Arriba y Abajo) */
 .zona-cartas {
@@ -89,19 +90,25 @@ button:last-child:hover {
 }  
 
 /* Pantalla completa que bloquea el juego al inicio */
+/* Pantalla de inicio */
 .overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.8); /* Fondo oscuro semitransparente */
-    backdrop-filter: blur(8px);    /* Desenfoque de fondo (muy moderno) */
+    background: radial-gradient(circle, #1a2a23 0%, #060a08 100%);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;                 /* Asegura que esté por encima de todo */
-    transition: opacity 0.5s ease;
+    z-index: 1000;
+    /* Transición suave de movimiento */
+    transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* Esta clase la añadiremos con JS para que suba */
+.subir-pantalla {
+    transform: translateY(-100%);
 }
 
 .mensaje-bienvenida {
