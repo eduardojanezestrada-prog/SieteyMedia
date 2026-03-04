@@ -1,6 +1,18 @@
-button{
+.tapete{
+    display : 'flex';
+    justify-content : 'center'; 
+    align-items : 'center';     
+    height : '100vh';  
+
+}
+
+#boton button{
     background-color: chocolate;
     font-family: fantasy;
     color: black;
-     
+    display: flex;           
+    justify-content: center;  
+    align-items: center;      
+    height: 100vh;          
+    gap: 20px;
 }
