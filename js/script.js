@@ -68,8 +68,8 @@
             var elegido= arrayCartas[cartaleatoria];
             nuevaImagen.src=elegido.url;
 
-            nuevaImagen.style.width = "120px";
-            nuevaImagen.style.height = "180px";
+            nuevaImagen.style.width = "140px";
+            nuevaImagen.style.height = "200px";
 
             nota+=elegido.valor;
             arrayCartas.splice(cartaleatoria, 1);
@@ -86,8 +86,7 @@
     // Función para que juegue la máquina
     async function Maquina() {
         const esperar = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-        console.log(nota);
-        document.getElementById("maquina")
+        document.getElementById("maquina");
         while(notamaquina<7.5){
             var nuevaImagen = document.createElement("img");
         
@@ -95,8 +94,8 @@
             var elegido= arrayCartas[cartaleatoria];
             nuevaImagen.src=elegido.url;
 
-            nuevaImagen.style.width = "60px";
-            nuevaImagen.style.height = "90px";
+            nuevaImagen.style.width = "90px";
+            nuevaImagen.style.height = "135px";
 
             notamaquina+=elegido.valor;
             arrayCartas.splice(cartaleatoria, 1);
@@ -104,7 +103,7 @@
             await esperar(1000);
         }
 
-        if(nota=7.5){
+        if(nota===7.5){
             condicion=1;
         } else if(nota<7.5 && notamaquina<7.5){
             if(nota>=notamaquina){
@@ -123,28 +122,29 @@
         } else if(nota>7.5 && notamaquina<7.5){
             condicion=0;
         }
+        mostrarImagenFinal(condicion);
     }
 
     // Función que debes llamar cuando detectes que el proceso "ha finalizado"
     function mostrarImagenFinal(condicion) {
-        const imagen = document.getElementById('imagen-resultado');
+        const imagen = document.getElementById('imagen-final');
         const overlay = document.getElementById('pantalla-final');
 
         // Evaluamos el resultado para elegir la imagen
         if (condicion === 1) {
-            imagen.src = "ruta/a/tu-imagen-buena.jpg"; 
+            imagen.src = "images/victoria.png"; 
             imagen.alt = "¡Enhorabuena, lo lograste!";
         } else if (condicion === 0) {
-            imagen.src = "ruta/a/tu-imagen-mala.jpg";
+            imagen.src = "images/derrota.png";
             imagen.alt = "Vaya, inténtalo de nuevo.";
         }
 
         // Una vez cambiada la imagen, mostramos la capa superpuesta
         overlay.classList.remove('oculto');
     }
-
+document.addEventListener('DOMContentLoaded', function() {
     // Lógica para cerrar la imagen final si el usuario quiere seguir viendo la página
     document.getElementById('cerrar-modal').addEventListener('click', function() {
-        const overlay = document.getElementById('pantalla-final');
-        overlay.classList.add('oculto'); // Vuelve a ocultar la capa
-    });
+    location.reload(); // Esto fuerza al navegador a recargar la página por completo
+});
+});

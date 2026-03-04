@@ -80,10 +80,8 @@ button:last-child:hover {
 } 
 /* Estilos para la imagen final para que no sea más grande que la pantalla */ 
 #imagen-final { 
-    max-width: 80%; 
-    max-height: 80vh; 
-    border-radius: 10px; 
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); 
+    max-width: 200%; 
+    max-height: 200%;
 } 
 .contenido-modal { 
     text-align: center; 
