@@ -1,4 +1,16 @@
 
+// Función para la pantalla de incio (Consultada con IA)      
+function comenzarJuego() {
+    // Buscamos el elemento en el HTML
+    const pantalla = document.getElementById('pantalla-inicio');
+    // Esta clase activa el moviento de la pantalla llamanfo la clase del CSS
+    pantalla.classList.add('subir-pantalla');
+    // Después de que termine la animación, eliminamos el div, para que no estorbe en el código.
+    setTimeout(() => {
+        pantalla.style.display = 'none';
+    }, 850); 
+}
+
     /*********** Definición de la clase cubo ************/
     class Carta {
         constructor (arg1, arg2) {

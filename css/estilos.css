@@ -1,21 +1,35 @@
-body, .tablero {
+body {
     margin: 0;
     padding: 0;
-    /* Un degradado muy suave, casi imperceptible, para dar profundidad */
+    background: #0f1714;
+    font-family: 'Inter', -apple-system, sans-serif;
+    overflow: hidden; /* Esto evita que puedas hacer scroll hacia arriba mientras sube la pantalla */
+}
+
+.tablero {
     background: radial-gradient(circle at center, #1a2a23 0%, #0f1714 100%);
+    /* Cambiamos absolute por fixed para que sea inmóvil tras la cortina */
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100vh;
+    
+    /* Mantenemos tu distribución anterior */
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly; /* Cambiado a space-evenly para que no se pegue a los bordes */
     align-items: center;
-    font-family: 'Inter', -apple-system, sans-serif;
     color: white;
-    z-index: 1; /* El tablero se queda quieto atrás */
+    z-index: 1;
 }
+
 /* Estilo común para las zonas de cartas (Arriba y Abajo) */
 .zona-cartas {
     width: 90%;
+    max-width: 600px; /* Esto evita que en pantallas grandes se estire demasiado */
     min-height: 180px;
+    height: auto;
     display: flex;
     justify-content: center; /* Cartas centradas horizontalmente */
     align-items: center;
@@ -23,6 +37,8 @@ body, .tablero {
     /* Un borde sutil para ver dónde van las cartas (opcional) */
     border: 2px dashed rgba(255, 255, 255, 0.15);
     border-radius: 15px;
+    padding: 10px;
+    transition: all 0.3s ease; /* Para que el crecimiento no sea brusco */
 }
 
 /* Estilo para la zona de botones (Centro) */
