@@ -105,6 +105,8 @@
 
         if(nota===7.5){
             condicion=1;
+        } else if(notamaquina===7.5){
+            condicion=0;
         } else if(nota<7.5 && notamaquina<7.5){
             if(nota>=notamaquina){
                 condicion=1;
