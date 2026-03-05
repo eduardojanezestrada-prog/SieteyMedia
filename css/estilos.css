@@ -2,23 +2,19 @@ body {
     margin: 0;
     padding: 0;
     background: #0f1714;
-    font-family: 'Inter', -apple-system, sans-serif;
+    font-family: Serif, 'Inter', -apple-system, sans-serif;
     overflow: hidden; /* Esto evita que puedas hacer scroll hacia arriba mientras sube la pantalla */
 }
 
 .tablero {
-    background: radial-gradient(circle at center, #1a2a23 0%, #0f1714 100%);
-    /* Cambiamos absolute por fixed para que sea inmóvil tras la cortina */
-    position: fixed; 
+    background: radial-gradient(circle at center, #0a683f 0%, #0f1714 100%);
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    
-    /* Mantenemos tu distribución anterior */
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly; /* Cambiado a space-evenly para que no se pegue a los bordes */
+    justify-content: space-evenly;
     align-items: center;
     color: white;
     z-index: 1;
@@ -111,7 +107,7 @@ button:last-child:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle, #1a2a23 0%, #060a08 100%);
+    background: radial-gradient(circle, #0a683f 0%, #060a08 100%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -143,7 +139,6 @@ button:last-child:hover {
     color: rgba(255, 255, 255, 0.7);
 }
 
-/* Reutilizamos el estilo de tus botones minimalistas pero más grande */
 .mensaje-bienvenida button {
     padding: 15px 40px;
     font-size: 1rem;
@@ -152,4 +147,57 @@ button:last-child:hover {
     border: none;
     cursor: pointer;
     border-radius: 5px;
+}
+
+/* Clase para darle profundidad a las cartas */
+.carta-estilo {
+    border-radius: 8px; /* Bordes redondeados para suavizar */
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5); /* Sombra: x, y, desenfoque, color */
+    transition: transform 0.2s; /* Opcional: para efectos al pasar el ratón */
+    display: inline-block;
+    margin: 5px;
+}
+
+/* Efecto cuando pasas el cursor */
+.carta-estilo:hover {
+    transform: translateY(-5px);
+    box-shadow: 6px 10px 20px rgba(0, 0, 0, 0.6);
+}
+
+#mazo-decorativo {
+    position: absolute;
+    right: 100px; /* Ajusta según cuánto espacio quieras dejar al borde */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100px;
+    height: 145px;
+    perspective: 1000px;
+}
+
+.carta-reverso {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #b71c1c;
+    background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png"), 
+                      radial-gradient(circle, #d32f2f, #8e0000);
+    border: 4px solid white;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}
+
+/* Efecto de "pila" de cartas (desplazamos cada una un poquito) */
+.carta-reverso:nth-child(1) { transform: translate(-8px, -8px); }
+.carta-reverso:nth-child(2) { transform: translate(-4px, -4px); }
+.shadow-mazo {
+    box-shadow: 10px 10px 20px rgba(0,0,0,0.5) !important;
+}
+
+#logo{
+    text-align: center;
+}
+
+#centrarlogo{
+    margin-top: 45px;
+    opacity: 0.8;
 }
