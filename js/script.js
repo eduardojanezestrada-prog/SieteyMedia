@@ -133,7 +133,7 @@ function SacarCarta() {
   }
   // Mostramos la puntuación del jugador
   document.getElementById("puntaje-jugador").innerHTML =
-    "Tu puntuación: " + nota;
+    "Puntos: " + nota;
 }
 
 // Función para plantarse
@@ -189,7 +189,7 @@ async function Maquina() {
 
     /* Actualizamos la puntuación de la máquina en vivo y pausamos el bucle 
         para que haya un poco de pausa entre carta y carta */
-    puntajeMaquina.textContent = "Puntuación máquina: " + notamaquina;
+    puntajeMaquina.textContent = "Puntos máquina: " + notamaquina;
     await esperar(800);
   }
 
