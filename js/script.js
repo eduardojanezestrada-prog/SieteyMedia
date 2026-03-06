@@ -110,10 +110,11 @@ var nota = 0.0,
   condicion = 0;
 
 // Función para que el jugador saque carta y calcule su puntuación
-function SacarCarta() {
+async function SacarCarta() {
   // Comprobamos que no se haya pulsado el botón de plantarse
   if (!plantado) {
     // Creamos las variables que vamos a usar en nuestra función
+    const esperar = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
     var nuevaImagen = document.createElement("img");
     var cartaleatoria = Math.floor(Math.random() * arrayCartas.length);
     var elegido = arrayCartas[cartaleatoria];
@@ -129,6 +130,7 @@ function SacarCarta() {
              eliminamos dicha carta del array y la mostramos */
     nota += elegido.valor;
     arrayCartas.splice(cartaleatoria, 1);
+    await esperar(200);
     document.getElementById("tapete").appendChild(nuevaImagen);
   }
   // Mostramos la puntuación del jugador
