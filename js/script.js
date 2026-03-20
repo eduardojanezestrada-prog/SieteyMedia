@@ -136,6 +136,10 @@ async function SacarCarta() {
   // Mostramos la puntuación del jugador
   document.getElementById("puntaje-jugador").innerHTML =
     "Puntos: " + nota;
+  
+  // Comprobamos que el jugador no haya pasado de 7,5
+  if(nota>7.5)
+    mostrarImagenFinal(0);
 }
 
 // Función para plantarse
@@ -161,13 +165,9 @@ async function Maquina() {
     cartaleatoria,
     elegido;
 
-  /* Con este condicional hacemos que si te has pasado, la máquina pare antes para aumentar 
-         sus opciones de victoria y si te quedas corto que intente al menos superarte */
-  if (nota > 7.5) {
-    objetivo = 6;
-  } else if(nota<7.5) {
-    objetivo=nota+0.1;
-  }
+  // Comprobamos la puntuación del jugador para que la máquina asegure ganar
+  if(nota<=6)
+    objetivo=nota+0.5;
 
   // Bucle de acción de la máquina
   while (notamaquina < objetivo) {
@@ -206,16 +206,8 @@ async function Maquina() {
     } else {
       condicion = 0;
     }
-  } else if (nota > 7.5 && notamaquina > 7.5) {
-    if (nota <= notamaquina) {
-      condicion = 1;
-    } else {
-      condicion = 0;
-    }
-  } else if (nota < 7.5 && notamaquina > 7.5) {
+  }else if (nota < 7.5 && notamaquina > 7.5) {
     condicion = 1;
-  } else if (nota > 7.5 && notamaquina < 7.5) {
-    condicion = 0;
   }
 
   // Una vez calculado el resultado llamamos a la función para mostrar si has ganado o no
