@@ -1,14 +1,43 @@
-# SieteyMedia
-Repositorio para el trabajo de sistemas de las siete y media.
+# 🃏 Siete y Media (Siete y Media Game)
 
-En este repositorio se encuentra el trabajo realizado para el modulo de lenguaje de marcas.
-El trabajo consta de un juego de cartas español conocido como "Siete y media". El juego consiste en sacar cartas de la baraja española(entre 1 y 12 sin 8 ni 9) hasta llegar a 7,5 puntos.
-Las cartas del 1 al 7 sumas los puntos equivalentes a su número de carta, sin embargo las figuras, es decir, sota, caballo y rey, equivalen a medio punto cada una.
+![Licencia](https://img.shields.io/badge/licencia-MIT-green.svg)
+![Estado](https://img.shields.io/badge/estado-en_desarrollo-blue.svg)
 
-El usuario en la interfaz principal tendra la opción de empezar a jugar, al pulsar iniciar a jugar se le repartirá la primera carta automáticamente y entonces le daremos dos opciones, la primera le permitirá volver a robar carta, esto mostrará una segunda carta en pantalla y sumara su valor con la anterior. La segunda opción antes mencionada daria la oportunidad al jugador de terminar su turno, al seleccionarlo pasaria a ser el turno de la máquina.
+Una implementación en código del clásico juego de cartas español **"Siete y Media"**. El objetivo principal del juego es conseguir sumar 7 puntos y medio con la baraja española o acercarse lo máximo posible sin pasarse.
 
-En su turno, la máquina, realiza el mismo proceso que ya relizó el jugador, roba o se planta hasta alcanzar, al menos, 7,5 puntos. Una vez finalizado el turno del ordenador, se comparará con los puntos del jugador y ganará el que se haya quedado mas cerca del objetivo. En pos de buscar que el juego sea mas interesante he permitido que el jugador se pueda pasar de 7.5 puntos y ganar, para calcular el campeón usaremos la siguiente lógica.
+---
 
-Si el jugador llega a 7.5 gana indistintamente del puntuaje de la maquina, otorgando así una pequeña ventaja al jugador y evitar que se frustre. En cambio, si la máquina llega a 7.5 y el jugador no, será la máquina la que gana. En un supuesto de que la máquina se pase y el jugador no llegue a la puntuación la victoria será del jugador y viceversa. El último caso, que ambos se pasen o ninguno llegue, en dicho supuesto ganará el que se haya quedado más cerca de los siete puntos y medio mientras que en una situación de empate la victoria irá para el jugador. 
+## 🎯 Objetivo del Juego
 
-Tras la comparación se mostrará la pantalla del resultado, con un logo de victoria o derrota ademas de mostrando un botón de volver a jugar.
+El juego utiliza la **Baraja Española** (40 cartas: Oros, Copas, Espadas y Bastos):
+* Las cartas numéricas (1 al 7) conservan su valor nominal.
+* Las figuras (Sota, Caballo y Rey - 10, 11 y 12) valen **0.5 puntos** (medio punto).
+* Gana quien más se acerque a 7.5 sin sobrepasarlo. Pasarse de 7.5 implica perder automáticamente la ronda.
+
+---
+
+## 🚀 Características
+
+* 🃏 Simulación de mazo y reparto de baraja española.
+* 🤖 Lógica de partida (Jugador vs. Banca / Consola).
+* 📊 Cálculo automático de puntuación.
+* 🎛️ Toma de decisiones interactiva (pedir carta o plantarse).
+
+---
+
+## 🛠️ Tecnologías Utilizadas
+
+* **Lenguaje:** [JavaScript]
+* **Entorno / IDE:** [ Visual Studio Code]
+
+---
+
+## 💻 Instalación y Ejecución
+
+
+### Pasos para clonar y ejecutar
+
+1. **Clonar el repositorio:**
+   ```bash
+   git clone [https://github.com/eduardojanezestrada-prog/SieteyMedia.git](https://github.com/eduardojanezestrada-prog/SieteyMedia.git)
+   cd SieteyMedia
